@@ -1,0 +1,10 @@
+CREATE SCHEMA IF NOT EXISTS news_portal;
+
+CREATE TABLE IF NOT EXISTS news_portal.news
+(
+    id SERIAL NOT NULL PRIMARY KEY,
+    title VARCHAR(100) NOT NULL,
+    brief VARCHAR(500) NOT NULL,
+    news_date DATE NOT NULL,
+    content VARCHAR(10000) NOT NULL
+    );

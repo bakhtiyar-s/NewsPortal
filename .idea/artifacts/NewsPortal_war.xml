@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="NewsPortal:war">
+    <output-path>$PROJECT_DIR$/NewsPortal/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>NewsPortal</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="NewsPortal-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="NewsPortal:war exploded" />
+    </root>
+  </artifact>
+</component>
