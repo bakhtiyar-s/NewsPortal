@@ -1,6 +1,8 @@
 package com.epam.security;
 
 import io.jsonwebtoken.*;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
@@ -18,7 +20,7 @@ import java.util.Date;
 
 @Component
 public class JwtTokenProvider {
-
+    private static final Logger LOGGER = LogManager.getLogger(JwtTokenFilter.class.getName());
     private final UserDetailsService userDetailsService;
 
     @Value("${jwt.secretKey}")
@@ -58,6 +60,7 @@ public class JwtTokenProvider {
             Jws<Claims> claimsJws = Jwts.parser().setSigningKey(secretKey).parseClaimsJws(token);
             return !claimsJws.getBody().getExpiration().before(new Date());
         } catch (JwtException | IllegalArgumentException e) {
+            LOGGER.error(e.getMessage(),e);
             throw new JwtAuthenticationException("Jwt token is expired or invalid", HttpStatus.UNAUTHORIZED);
         }
     }

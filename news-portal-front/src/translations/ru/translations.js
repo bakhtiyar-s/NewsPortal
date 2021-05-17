@@ -27,3 +27,4 @@ export const TRANSLATIONS_RU = {
     "403 - You Shall Not Pass":"403 - Доступ закрыт",
     "Maybe you have a typo":"Может у вас опечатка в url? Или вы хотели пойти в другое место?"
 };
+

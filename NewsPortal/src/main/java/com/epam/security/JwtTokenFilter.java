@@ -1,5 +1,8 @@
 package com.epam.security;
 
+import com.epam.controller.NewsController;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -16,7 +19,7 @@ import java.io.IOException;
 
 @Component
 public class JwtTokenFilter extends GenericFilterBean {
-
+    private static final Logger LOGGER = LogManager.getLogger(JwtTokenFilter.class.getName());
     private final JwtTokenProvider jwtTokenProvider;
 
     @Autowired
@@ -38,6 +41,7 @@ public class JwtTokenFilter extends GenericFilterBean {
         } catch (JwtAuthenticationException e) {
             SecurityContextHolder.clearContext();
             ((HttpServletResponse) servletResponse).sendError(e.getHttpStatus().value());
+            LOGGER.error(e.getMessage(),e);
             throw new JwtAuthenticationException("Jwt token is expired or invalid");
         }
         filterChain.doFilter(servletRequest, servletResponse);
