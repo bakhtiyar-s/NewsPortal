@@ -124,7 +124,7 @@ class AddNews extends Component {
                         <div className="form-group">
                             <label htmlFor="newsDate">{t("News Date")}</label>
                             <input
-                                type="text"
+                                type="date"
                                 className="form-control"
                                 id="newsDate"
                                 required

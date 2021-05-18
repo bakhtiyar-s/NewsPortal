@@ -1,9 +1,6 @@
 package com.epam.config;
 
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.PropertySource;
+import org.springframework.context.annotation.*;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.ViewResolver;
@@ -19,8 +16,9 @@ import java.util.Locale;
 
 @Configuration
 @EnableWebMvc
+@EnableAspectJAutoProxy
 @PropertySource(value = "classpath:/application.properties")
-@ComponentScan(basePackages = {"com.epam.service", "com.epam.dao", "com.epam.controller", "com.epam.config", "com.epam.security"})
+@ComponentScan(basePackages = {"com.epam.service", "com.epam.dao", "com.epam.controller", "com.epam.config", "com.epam.security", "com.epam.aspect"})
 public class WebConfig implements WebMvcConfigurer {
 
     @Bean
@@ -41,4 +39,6 @@ public class WebConfig implements WebMvcConfigurer {
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(localeInterceptor());
     }
+
+
 }

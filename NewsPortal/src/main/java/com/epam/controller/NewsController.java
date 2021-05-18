@@ -54,7 +54,6 @@ public class NewsController {
             LOGGER.error(e.getMessage(),e);
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
-
     }
 
     @ResponseBody

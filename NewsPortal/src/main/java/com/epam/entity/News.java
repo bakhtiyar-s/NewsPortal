@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
+import com.sun.istack.NotNull;
 
 import javax.persistence.*;
 
@@ -19,19 +20,24 @@ public class News {
     @Column(name = "id")
     private int id;
 
+
     @Column(name = "title")
+    @NotNull
     private String title;
 
+    @NotNull
     @Column(name = "brief")
     private String brief;
 
     @Column(name = "news_date")
     @JsonDeserialize(using = LocalDateDeserializer.class)
     @JsonSerialize(using = LocalDateSerializer.class)
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+    @NotNull
     private LocalDate newsDate;
 
     @Column(name = "content")
+    @NotNull
     private String content;
 
     public News() {}

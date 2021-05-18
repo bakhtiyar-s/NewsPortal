@@ -40,7 +40,6 @@
     <orderEntry type="library" name="Maven: org.springframework:spring-core:5.3.5" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-jcl:5.3.5" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-context:5.3.5" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework:spring-aop:5.3.5" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-beans:5.3.5" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-expression:5.3.5" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-webmvc:5.3.5" level="project" />
@@ -83,5 +82,7 @@
     <orderEntry type="library" name="Maven: io.jsonwebtoken:jjwt:0.9.1" level="project" />
     <orderEntry type="library" name="Maven: org.apache.logging.log4j:log4j-api:2.12.1" level="project" />
     <orderEntry type="library" name="Maven: org.apache.logging.log4j:log4j-core:2.12.1" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework:spring-aop:5.3.5" level="project" />
+    <orderEntry type="library" name="Maven: org.aspectj:aspectjweaver:1.9.6" level="project" />
   </component>
 </module>
