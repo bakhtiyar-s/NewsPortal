@@ -8,7 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 import java.util.List;
 
 @CrossOrigin(origins = "http://localhost:3000")
@@ -42,17 +45,21 @@ public class NewsController {
 
     @ResponseBody
     @RequestMapping(value = "/news/add", method = RequestMethod.POST,produces = "application/json")
-    public ResponseEntity<News> addNews(@RequestBody News news) {
-        try {
-            if (news.getId()==0) {
-                newsService.addNews(news);
-            } else {
-                newsService.updateNews(news.getId(), news);
+    public ResponseEntity<?> addNews(@Valid @RequestBody News news, BindingResult result) {
+        if (result.hasErrors()) {
+            return new ResponseEntity<>("Title length must be between 20 and 200 characters!", HttpStatus.BAD_REQUEST);
+        } else {
+            try {
+                if (news.getId() == 0) {
+                    newsService.addNews(news);
+                } else {
+                    newsService.updateNews(news.getId(), news);
+                }
+                return new ResponseEntity<>(news, HttpStatus.CREATED);
+            } catch (Exception e) {
+                LOGGER.error(e.getMessage(), e);
+                return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
             }
-            return new ResponseEntity<>(news, HttpStatus.CREATED);
-        } catch (Exception e) {
-            LOGGER.error(e.getMessage(),e);
-            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 

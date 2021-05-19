@@ -1,5 +1,6 @@
 package com.epam.entity;
 
+import com.epam.validation.TitleLengthConstraint;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
@@ -23,6 +24,7 @@ public class News {
 
     @Column(name = "title")
     @NotNull
+    @TitleLengthConstraint
     private String title;
 
     @NotNull

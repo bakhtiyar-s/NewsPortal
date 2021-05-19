@@ -22,6 +22,7 @@ class AddNews extends Component {
             brief: "",
             Content: "",
 
+            message: "",
             submitted: false
         };
     }
@@ -76,8 +77,13 @@ class AddNews extends Component {
                 });
                 console.log(response.data);
             })
-            .catch(e => {
-                console.log(e);
+            .catch(error => {
+                console.log(error);
+                const resMessage = error.response.data || error.toString();
+
+                this.setState({
+                    message: resMessage
+                });
             });
     }
 
@@ -121,6 +127,13 @@ class AddNews extends Component {
                                 name="title"
                             />
                         </div>
+                        {this.state.message && (
+                            <div className="form-group">
+                                <div className="alert alert-danger" role="alert">
+                                    {this.state.message}
+                                </div>
+                            </div>
+                        )}
                         <div className="form-group">
                             <label htmlFor="newsDate">{t("News Date")}</label>
                             <input

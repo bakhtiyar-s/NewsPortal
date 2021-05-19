@@ -60,6 +60,8 @@
           <element id="library" level="project" name="Maven: org.apache.logging.log4j:log4j-core:2.12.1" />
           <element id="library" level="project" name="Maven: org.springframework:spring-aop:5.3.5" />
           <element id="library" level="project" name="Maven: org.aspectj:aspectjweaver:1.9.6" />
+          <element id="library" level="project" name="Maven: org.hibernate.validator:hibernate-validator:6.0.10.Final" />
+          <element id="library" level="project" name="Maven: javax.validation:validation-api:2.0.1.Final" />
         </element>
       </element>
       <element id="directory" name="META-INF">
