@@ -1,6 +1,6 @@
 package com.epam.service;
 
-import com.epam.dao.NewsDao;
+import com.epam.dao.GenericDao;
 import com.epam.entity.News;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,40 +11,42 @@ import java.util.List;
 @Service
 @Transactional
 public class NewsServiceImpl implements NewsService {
-    private NewsDao newsDao;
+
+    GenericDao<News> newsDao;
 
     @Autowired
-    public void setNewsDao(NewsDao newsDao) {
+    public void setNewsDao(GenericDao<News> newsDao) {
         this.newsDao = newsDao;
+        this.newsDao.setEntityClass(News.class);
     }
 
     @Override
     public List<News> listNews() {
-        return this.newsDao.listNews();
+        return this.newsDao.findAll();
     }
 
     @Override
-    public News addNews(News news) {return this.newsDao.addNews(news);
+    public News addNews(News news) {return this.newsDao.create(news);
     }
 
     @Override
     public void deleteNews(int id) {
-        this.newsDao.deleteNews(id);
+        this.newsDao.deleteById(id);
     }
 
     @Override
     public News updateNews(int id, News news) {
-        News oldNews = newsDao.getNewsById(id);
+        News oldNews = newsDao.findOne(id);
         oldNews.setTitle(news.getTitle());
         oldNews.setBrief(news.getBrief());
         oldNews.setContent(news.getContent());
         oldNews.setNewsDate(news.getNewsDate());
 
-        return this.newsDao.updateNews(oldNews);
+        return this.newsDao.update(oldNews);
     }
 
     @Override
     public News getNewsById(int id) {
-        return this.newsDao.getNewsById(id);
+        return this.newsDao.findOne(id);
     }
 }

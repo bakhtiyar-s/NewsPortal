@@ -10,12 +10,13 @@ import com.sun.istack.NotNull;
 
 import javax.persistence.*;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Objects;
 
 @Entity
 @Table(name = "news", schema = "news_portal")
-public class News {
+public class News implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")

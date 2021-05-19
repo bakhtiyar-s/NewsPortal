@@ -1,7 +1,5 @@
 package com.epam.dao;
 
-import com.epam.entity.Role;
-import com.epam.entity.Status;
 import com.epam.entity.User;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
